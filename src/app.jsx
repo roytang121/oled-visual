@@ -9,6 +9,10 @@ const ppiToGridSize = (ppi) => {
   return (normalise((2.54 * 0.01) / ppi)).toFixed(1)
 }
 
+const ppiToSppi = (ppi) => {
+  return (ppi / Math.sqrt(2)).toFixed(1)
+}
+
 const normalise = (um) => {
   return um * 1000000
 }
@@ -30,9 +34,9 @@ export default class App extends React.Component {
       },
       ppi: INIT_PPI,
       sppi: {
-        r: INIT_PPI / 2,
+        r: ppiToSppi(INIT_PPI),
         g: INIT_PPI,
-        b: INIT_PPI / 2
+        b: ppiToSppi(INIT_PPI)
       },
       gridSize: GRID_SIZE
     }
@@ -90,9 +94,9 @@ export default class App extends React.Component {
       canvasSize: {width: canvasDimension, height: canvasDimension},
       ppi: ppi,
       sppi: {
-        r: ppi / 2,
+        r: ppiToSppi(ppi),
         g: ppi,
-        b: ppi / 2
+        b: ppiToSppi(ppi)
       },
       colorSize: {
         r: GRID_SIZE,
@@ -159,6 +163,7 @@ export default class App extends React.Component {
           </form>
 
           <form style={styles.controlPanel}>
+            <div>Pixel Dimension (µm)</div>
             <div style={styles.controlRow}>
               <label>R: </label><input name='r' type='text' placeholder={this.state.colorSize.r} value={this.state.colorSize.r} onChange={this._handleRGBChange.bind(this)} />
             </div>
