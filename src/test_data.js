@@ -1,8 +1,10 @@
 const map = [
-  ['r', 'g', 'b', 'r'],
-  ['g', 'r', 'r', 'b'],
-  ['r', 'g', 'b', 'g'],
-  ['b', 'g', 'r', 'b']
+  [null, null, 'g', 'b', null, null],
+  [null, 'b', 'r', 'g', 'r', null],
+  ['g', 'b', 'g', 'b', 'g', 'b'],
+  ['r', 'g', 'r', 'g', 'r', 'r'],
+  [null, 'b', 'g', 'b', 'g', null],
+  [null, null, 'r', 'g', null, null]
 ]
 
 export default map
